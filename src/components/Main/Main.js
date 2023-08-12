@@ -1,5 +1,6 @@
 // Импорты
 //Библиотеки
+import AboutProject from './AboutProject/AboutProject';
 import './Main.css';
 //Компоненты
 import NavTab from './NavTab/NavTab.js';
@@ -19,6 +20,7 @@ function Main() {
     <div className="main">
       < Promo />
       < NavTab />
+      < AboutProject/>
     </div>
   );
 }
