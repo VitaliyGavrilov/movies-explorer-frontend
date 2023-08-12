@@ -5,6 +5,7 @@ import './Main.css';
 //Компоненты
 import NavTab from './NavTab/NavTab.js';
 import Promo from './Promo/Promo.js';
+import Technologies from './Technologies/Technologies';
 //Утилиты
 
 //Контекст
@@ -20,7 +21,8 @@ function Main() {
     <div className="main">
       < Promo />
       < NavTab />
-      < AboutProject/>
+      < AboutProject />
+      < Technologies />
     </div>
   );
 }
