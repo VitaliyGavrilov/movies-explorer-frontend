@@ -1,5 +1,6 @@
 // Импорты
 //Библиотеки
+import AboutMe from './AboutMe/AboutMe';
 import AboutProject from './AboutProject/AboutProject';
 import './Main.css';
 //Компоненты
@@ -23,6 +24,7 @@ function Main() {
       < NavTab />
       < AboutProject />
       < Technologies />
+      < AboutMe />
     </div>
   );
 }
