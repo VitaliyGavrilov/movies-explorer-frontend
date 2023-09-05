@@ -29,7 +29,6 @@
   left: calc(50% - 160px);
 }
 
-
 @media screen and (max-width: 920px) {
   .promo__title {
     margin: 326px auto 342px auto;

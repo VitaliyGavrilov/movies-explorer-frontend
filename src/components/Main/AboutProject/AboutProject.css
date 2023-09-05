@@ -81,6 +81,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  color: #A0A0A0;
 }
 
 @media screen and (max-width: 920px) {
@@ -112,6 +113,15 @@
   }  
   .about-project__content-block {
     max-width: 319px;
+  }
+  .about-project__content-title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+  
+  .about-project__content-text {
+    font-size: 11px;
+    line-height: 16px;
   }
   .about-project__duration {
     grid-template-columns: minmax(100px, 140px) minmax(184px, 912px);

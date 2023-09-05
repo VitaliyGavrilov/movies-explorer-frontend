@@ -1,21 +1,12 @@
-// Импорты
-import promoLogo from '../../../images/promo-logo.svg';
+// ---Импорты
 //Библиотеки
 import React from 'react';
+//Изображения
+import promoLogo from '../../../images/promo-logo.svg';
+//Стили
 import './Promo.css';
-//Компоненты
-
-//Утилиты
-
-//Контекст
-
 // компонент с вёрсткой баннера страницы «О проекте».
 function Promo() {
-  // ---Cтейт-переменные:
-
-  // ---Функции
-
-  // ---Сборка страницы из компонентов
   return (
     <section className="promo">
       <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>

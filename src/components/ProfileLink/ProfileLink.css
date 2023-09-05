@@ -1,0 +1,27 @@
+.profile-link {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px;
+  color: white;
+  text-decoration: none;
+  border-radius: 40px;
+  background: rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 32px;
+}
+
+.profile-link__img {
+  width: 26px;
+  height: 26px;
+  margin: 0 0 0 7px;
+  padding: 0;
+  border-radius: 50px;
+  background: #313131;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

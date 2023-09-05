@@ -18,9 +18,9 @@ function Technologies() {
   // компонент с использованными технологиями.
   return (
     <section className="technologies">
-      <div className="technologies__block app__section">
+      <div className="technologies__block app__content">
 
-        <h2 className="main__subtitle">Технологии</h2>
+        <h2 className="app__subtitle">Технологии</h2>
 
         <div className='technologies__content'>
           <h3 className='technologies__content-title'>7 технологий</h3>
@@ -28,13 +28,27 @@ function Technologies() {
         </div>
 
         <ul className='technologies__list'>
-          <li className='technologies__list-item'>HTML</li>
-          <li className='technologies__list-item'>CSS</li>
-          <li className='technologies__list-item'>JS</li>
-          <li className='technologies__list-item'>React</li>
-          <li className='technologies__list-item'>Git</li>
-          <li className='technologies__list-item'>Express.js</li>
-          <li className='technologies__list-item'>mongoDB</li>
+          <li className='technologies__list-item'>
+            <p className="technologies__list-text">HTML</p>
+          </li>
+          <li className='technologies__list-item'>
+            <p className="technologies__list-text">CSS</p>
+          </li>
+          <li className='technologies__list-item'>
+            <p className="technologies__list-text">JS</p>
+          </li>
+          <li className='technologies__list-item'>
+            <p className="technologies__list-text">React</p>
+          </li>
+          <li className='technologies__list-item'>
+            <p className="technologies__list-text">Git</p>
+          </li>
+          <li className='technologies__list-item'>
+            <p className="technologies__list-text">Express.js</p>
+          </li>
+          <li className='technologies__list-item'>
+            <p className="technologies__list-text">mongoDB</p>
+          </li>
         </ul>
 
       </div>  

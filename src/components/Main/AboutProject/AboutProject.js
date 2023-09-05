@@ -18,20 +18,22 @@ function AboutProject() {
   // ---Сборка страницы из компонентов
   return (
     <section className="about-project">
-      <div className="about-project__block app__section">
+      <div className="about-project__block app__content">
 
-        <h2 className="main__subtitle">О проекте</h2>
+        <h2 className="app__subtitle">О проекте</h2>
 
         <div className="about-project__contents">
+          
           <div className="about-project__content-block">
-            <h3 className="about-project__content-title">Дипломный проект включал 5&nbsp;этапов</h3>
+            <h3 className="about-project__content-title">Дипломный проект включал 5 этапов</h3>
             <p className="about-project__content-text">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и&nbsp;финальные доработки.</p>
           </div>
 
           <div className="about-project__content-block">
-            <h3 className="about-project__content-title">На&nbsp;выполнение диплома ушло 5&nbsp;недель</h3>
+            <h3 className="about-project__content-title">На&nbsp;выполнение диплома ушло 5 недель</h3>
             <p className="about-project__content-text">У&nbsp;каждого этапа был мягкий и&nbsp;жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
           </div>
+
         </div>
 
         <div className="about-project__duration">

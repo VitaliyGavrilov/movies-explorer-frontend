@@ -1,9 +1,11 @@
 .app {
   color: white;
   border: 0;
+  margin: 0;
+  padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  font-family: 'Inter', 'arial', sans-serif;
+  font-family: "Inter", "arial", sans-serif;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -12,20 +14,63 @@
   -moz-text-size-adjust: 100%;
 }
 
-.app__section {
+.app__page {
+  color: white;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: "Inter", "arial", sans-serif;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
+
+.app__page_gray {
+  background: #202020;
+}
+
+.app__main-block {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__content {
   max-width: 1140px;
   width: 89.0625%;
   margin: 0 auto;
 }
 
+.app__subtitle {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  padding: 0 0 23px 0;
+  margin: 0 0 70px 0;
+  border-bottom: 1px solid #dadada;
+  width: 100%;
+}
+
 @media screen and (max-width: 920px) {
-  .app__section {
+  .app__content {
     width: 86.9791%;
   }
 }
 
 @media screen and (max-width: 460px) {
-  .app__section {
-    width: 88.75%;
+  .app__content {
+    width: 92.25%;
   }
-}  
+
+}
