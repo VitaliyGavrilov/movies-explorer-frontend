@@ -1,5 +1,7 @@
 # movies-explorer-frontend
 Репозиторий фронтенда для дипломной работы
+# Макет
+dark-3
 
 Адрес репозитория: https://github.com/VitaliyGavrilov/movies-explorer-frontend
 
