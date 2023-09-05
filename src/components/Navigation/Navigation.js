@@ -6,17 +6,17 @@ import ProfileLink from '../ProfileLink/ProfileLink';
 
 function Navigation({closePopup}) {
   const location = useLocation();
-  const classMoviesLink = location.pathname === '/movies' ? "header-popup__items_link header-popup__items-link_border" : "header-popup__items_link";
-  const classSavedMoviesLink = location.pathname === '/saved-movies' ? "header-popup__items_link header-popup__items-link_border" : "header-popup__items_link";
+  const classMoviesLink = location.pathname === '/movies' ? "navigation__items-link navigation__items-link_border" : "navigation__items-link";
+  const classSavedMoviesLink = location.pathname === '/saved-movies' ? "navigation__items-link navigation__items-link_border" : "navigation__items-link";
   return (
-    <div className="header-popup">
+    <div className="navigation">
       <button className='navigation__close-btn' onClick={closePopup}>
         <img src={close} alt='Закрыть навигацию'/>
       </button>
-      <nav className="header-popup__list">
-        <ul className="header-popup__items">
+      <nav className="navigation__list">
+        <ul className="navigation__items">
           <li>
-            <Link to="/" className="header-popup__items_link">Главная</Link>
+            <Link to="/" className="navigation__items-link">Главная</Link>
           </li>
           <li>
             <Link to="/movies" className={classMoviesLink}>Фильмы</Link>

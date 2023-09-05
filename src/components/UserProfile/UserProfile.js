@@ -46,9 +46,6 @@ function UserProfile() {
             />
           </label>
           <span className="profile-form__input-error profile-form__input-error_email">{errors.email}</span>
-          {/* <span className="profile-form__edit-result">
-            Результат выполнения изменений
-          </span> */}
           {!buttonStatus ? (
             <>
               <button
