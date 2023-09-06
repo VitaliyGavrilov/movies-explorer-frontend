@@ -15,18 +15,19 @@ function MoviesCard() {
         alt="Кадр из фильма"
         src={image}
       />
-      <div className="card__text">
-        <p className="card__name">33&nbsp;слова о&nbsp;дизайне</p>
-        <p className="card__time">1ч&nbsp;47м</p>
+      <div className='card__info'>
+         <div className="card__text">
+          <p className="card__name">33&nbsp;слова о&nbsp;дизайне</p>
+          <p className="card__time">1ч&nbsp;47м</p>
+        </div>
+        <button
+          className={`card__save-box_button ${!isSavedMovie ? 'card__save-box_button-inactive' : ''}`}
+          type="button"
+          title="Сохранить фильм"
+          aria-label="Сохранить фильм"
+          onClick={handleButtonClick}
+        />
       </div>
-      <button
-        className={`card__save-box_button ${!isSavedMovie ? 'card__save-box_button-inactive' : ''}`}
-        type="button"
-        title="Сохранить фильм"
-        aria-label="Сохранить фильм"
-        onClick={handleButtonClick}
-      />
-      
     </article>
   );
 }

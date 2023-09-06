@@ -48,3 +48,13 @@
   fill: none;
   background-color: rgba(0,0,0,0);
 }
+
+@media screen and (max-width: 920px) {
+  .search {
+    padding: 78px 0 51px;
+    border: 0;  
+  }
+  .search_width {
+    width: 92.1875%;
+  }
+}

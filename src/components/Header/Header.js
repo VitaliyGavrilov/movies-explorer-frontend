@@ -21,7 +21,7 @@ function Header() {
   };
   return (
     <header className="header">
-      <div className='header__content app__content'>
+      <div className='header__content app__content header__content_width'>
 
         <img src={logo} alt="Логотип проекта"/>
 

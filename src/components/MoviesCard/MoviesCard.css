@@ -10,25 +10,32 @@
   flex-wrap: wrap;
 }
 
+.card__info {
+  padding: 9px 16px 16px 16px;
+  margin: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .card__text {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   column-gap: 26px;
   max-width: 280px;
   width: 100%;
-  margin: 0;
-  padding: 14px 0 14px 14px;
-  height: 40px;
+  margin: 7px 0 0 0;
+  padding: 0;
 }
 
 .card__name {
+  font-size: 13px;
   font-style: normal;
   font-weight: 500;
-  font-size: 15px;
-  line-height: 18px;
+  line-height: normal;
   width: 100%;
-  margin: 0 0 9px;
+  margin: 0 0 17px;
   padding: 0;
 }
 
@@ -38,7 +45,8 @@
   background-repeat: no-repeat;
   height: 30px;
   width: 30px;
-  margin: 19px 0 0 26px;
+  margin: 0;
+  padding: 0;
   cursor: pointer;
   border-radius: 50%;
   transition: opacity 0.3s ease-in-out;
@@ -75,8 +83,17 @@
     max-width: 339px;
   }
 
+  .card__info {
+    padding: 8px 14px 14px 14px;
+  }
+
+  .card__name {
+    margin: 0 0 15px;
+  }
+
   .card__text {
     max-width: 250px;
+    margin-top: 6px;
   }
 
   .card__save-box_button {
@@ -84,13 +101,8 @@
   }
 }
 
-@media screen and (max-width: 767.5px) {
-  .card__text {
-    max-width: 210px;
-  }
-}
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 460px) {
   .card__save-box_button {
     margin-left: 32px;
   }

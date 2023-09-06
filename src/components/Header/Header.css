@@ -48,6 +48,13 @@
   }
   .header__btn-burger {
     display: block;
+    padding: 0;
+  }
+  .header__content {
+    padding: 15px 0;
+  }
+  .header__content_width {
+    width: 92.1875%;
   }
 }
 

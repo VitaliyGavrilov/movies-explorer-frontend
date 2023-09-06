@@ -17,7 +17,7 @@ function SearchForm() {
 
   // ---Сборка страницы из компонентов
   return (
-    <section className='search app__content'>
+    <section className='search app__content search_width'>
       <form className='search__form'>
         <fieldset className='search__fieldset'>
           <input

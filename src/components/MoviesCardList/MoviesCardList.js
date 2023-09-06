@@ -13,7 +13,7 @@ function MoviesCardList() {
   ));
 
   return (
-    <section className="cards app__content">
+    <section className="cards app__content cards_width">
       <div className="cards__list">
         {cards}
       </div>
