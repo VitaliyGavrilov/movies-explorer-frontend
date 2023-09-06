@@ -57,6 +57,11 @@
   opacity: .7;
   cursor: pointer;
 }
+@media screen and (max-width: 920px) {
+  .footer__content_width {
+    width: 92.1875%;
+  }
+}
 
 @media screen and (max-width: 550px) {
   .footer__text {

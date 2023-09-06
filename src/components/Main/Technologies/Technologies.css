@@ -67,6 +67,12 @@
 }
 
 @media screen and (max-width: 920px) {
+  .technologies {
+    padding: 90px 0 90px 0;
+  }
+  .technologies__content-title {
+    margin: 10px 0 0 0;
+  }
   .technologies__list-item {
     width: 84px;
     height: 57px;
@@ -78,6 +84,13 @@
   }
   .technologies__content {
     margin: 0 0 83px 0;
+  }
+  .technologies__content-text {
+    font-size: 12px;
+    line-height: 18px; /* 150% */
+    letter-spacing: -0.48px;
+    margin: 22px 0 0 0;
+
   }
 }
 

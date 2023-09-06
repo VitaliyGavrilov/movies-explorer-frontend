@@ -7,7 +7,7 @@ import logo from '../../../images/logo.svg';
 function HeaderMainPage() {
   return (
     <header className="header-main">
-      <div className='header-main__content app__content'>
+      <div className='header-main__content'>
         <img src={logo} alt="Логотип проекта"/>
         <div className='header-main__links-block'>
           <Link to="/signup" className="header-main__link" >

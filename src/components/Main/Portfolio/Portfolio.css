@@ -72,10 +72,10 @@
 
 @media screen and (max-width: 920px) {
   .portfolio__block {
-    padding-bottom: 90px;
+    padding-bottom: 80px;
   }
   .portfolio__text {
-    font-size: 38px;
+    font-size: 28px;
     letter-spacing: -1.12px;
   }
   .portfolio__link {

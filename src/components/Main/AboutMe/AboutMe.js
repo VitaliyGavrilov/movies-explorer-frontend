@@ -21,7 +21,7 @@ function AboutMe() {
     <section className="about-me">
       <div className="about-me__block app__content">
 
-        <h2 className="app__subtitle">Студент</h2>
+        <h2 className="app__subtitle about-me__title">Студент</h2>
 
         <div className='about-me__content'>
 

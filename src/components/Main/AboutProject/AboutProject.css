@@ -2,7 +2,7 @@
   background-color: #202020;
   margin: 0;
   padding: 0;
-  width: 100%; 
+  width: 100%;
 }
 
 .about-project__block {
@@ -50,7 +50,6 @@
   margin: 0;
   padding: 0;
   width: 100%;
-  
 }
 
 .about-project__duration-title {
@@ -65,11 +64,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
 
 .about-project__duration-title_green {
-  background-color: #3DDC84;
+  background-color: #3ddc84;
   color: #000;
 }
 
@@ -84,19 +82,25 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 @media screen and (max-width: 920px) {
   .about-project__block {
     padding: 90px 0;
-  }  
+  }
+  .about-project__contents {
+    margin: 0 0 93px 0;
+  }
   .about-project__content-block {
     max-width: 319px;
   }
   .about-project__content-text {
     font-size: 12px;
     line-height: 18px;
+  }
+  .about-project__duration {
+    grid-template-columns: minmax(100px, 140px) minmax(184px, 912px);
   }
   .about-project__duration-text {
     font-weight: 400;
@@ -106,14 +110,14 @@
 @media screen and (max-width: 460px) {
   .about-project__block {
     padding: 70px 0;
-  }  
+  }
   .about-project__contents {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 0 0 60px 0;
     padding: 0;
-  }  
+  }
   .about-project__content-block {
     max-width: 319px;
   }
@@ -121,7 +125,7 @@
     font-size: 18px;
     letter-spacing: -0.72px;
   }
-  
+
   .about-project__content-text {
     font-size: 11px;
     line-height: 16px;

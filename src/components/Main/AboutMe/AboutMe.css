@@ -106,6 +106,9 @@
     width: 255px;
     height: 307px;
   }
+  .about-me__title {
+    margin-bottom: 66px;
+  }
 }
 
 @media screen and (max-width: 460px) {

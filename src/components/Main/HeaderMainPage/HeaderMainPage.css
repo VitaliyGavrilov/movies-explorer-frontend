@@ -5,6 +5,9 @@
 }
 
 .header-main__content {
+  max-width: 1140px;
+  width: 89.0625%;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -40,6 +43,12 @@
   align-items: center;
   color: black;
   margin-left: 30px;
+}
+
+@media screen and (max-width: 920px) {
+  .header-main__content {
+    width: 92.1875%;
+  }
 }
 
 @media screen and (max-width: 460px) {
