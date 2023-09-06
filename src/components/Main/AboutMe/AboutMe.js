@@ -19,7 +19,7 @@ function AboutMe() {
   // компонент с использованными технологиями.
   return (
     <section className="about-me">
-      <div className="about-me__block app__content">
+      <div className="about-me__block app__content about-me__block_width">
 
         <h2 className="app__subtitle about-me__title">Студент</h2>
 

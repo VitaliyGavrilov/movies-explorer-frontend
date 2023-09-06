@@ -121,6 +121,9 @@
   .about-project__content-block {
     max-width: 319px;
   }
+  .about-project__content-block_margin-mod {
+    margin-top: 56px;
+  }
   .about-project__content-title {
     font-size: 18px;
     letter-spacing: -0.72px;
@@ -129,9 +132,17 @@
   .about-project__content-text {
     font-size: 11px;
     line-height: 16px;
+    margin-top: 18px;
   }
   .about-project__duration {
     grid-template-columns: minmax(100px, 140px) minmax(184px, 912px);
     row-gap: 10px;
+  }
+  .about-project__duration-title {
+    font-size: 11px;
+  }
+  .about-project__duration-text {
+    font-size: 11px;
+    line-height: normal;
   }
 }

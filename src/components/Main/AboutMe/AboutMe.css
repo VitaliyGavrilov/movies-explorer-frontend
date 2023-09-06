@@ -116,6 +116,9 @@
   .about-me__block {
     padding: 70px 0 70px 0;
   }
+  .about-me__block_width {
+    width: 91.25%;
+  }
   .about-me__content {
     flex-direction: column;
     justify-content: center;
@@ -124,12 +127,12 @@
     font-size: 30px;
     line-height: normal;
     letter-spacing: -1.2px;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
   }
   .about-me__content-subtitle {
     font-size: 11px;
     line-height: 16px;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
   }
   .about-me__content-text {
     font-size: 11px;
@@ -141,5 +144,8 @@
     width: 292px;
     height: 352px;
     margin-bottom: 40px;
+  }
+  .about-me__title {
+    margin-bottom: 60px;
   }
 }

@@ -91,6 +91,17 @@
   .portfolio__block {
     padding-bottom: 70px;
   }
+  .portfolio__block_width {
+    width: 91.25%;
+  }
+  .portfolio__title {
+    margin-bottom: 40px;
+    font-size: 14px;
+  }
+  .portfolio__list-item {
+    margin-bottom: 20px;
+    padding-bottom: 19px;
+  }
   .portfolio__text {
     font-size: 18px;
     letter-spacing: -0.72px;

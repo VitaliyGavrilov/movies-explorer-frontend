@@ -78,7 +78,7 @@
   .footer__content_year {
     order: 2;
     font-size: 12px;
-    line-height: 15px;
+    line-height: normal;
     color: #8B8B8B;
   }
 
@@ -90,6 +90,10 @@
 
   .footer__link {
     font-size: 12px;
-    line-height: 15px;
+    line-height: normal;
+  }
+
+  .footer__content_width {
+    padding-top: 30px;
   }
 }

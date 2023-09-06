@@ -70,7 +70,19 @@
 
 @media screen and (max-width: 460px) {
   .app__content {
-    width: 92.25%;
+    width: 88.75%;
+  }
+
+  .app__subtitle {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .app__subtitle {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    padding: 0 0 28px 0;
+    margin: 0 0 60px 0;
   }
 
 }

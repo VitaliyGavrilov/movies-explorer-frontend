@@ -29,7 +29,7 @@ function AboutProject() {
             <p className="about-project__content-text">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и&nbsp;финальные доработки.</p>
           </div>
 
-          <div className="about-project__content-block">
+          <div className="about-project__content-block about-project__content-block_margin-mod">
             <h3 className="about-project__content-title">На&nbsp;выполнение диплома ушло 5 недель</h3>
             <p className="about-project__content-text">У&nbsp;каждого этапа был мягкий и&nbsp;жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
           </div>
