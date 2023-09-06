@@ -1,6 +1,6 @@
 .technologies {
   background-color: #272727;
-  padding: 100px 0 90px 0;
+  padding: 110px 0 90px 0;
 }
 
 .technologies__block {
@@ -19,6 +19,8 @@
 }
 
 .technologies__content-title {
+  margin: 20px 0 0 0;
+  padding: 0;
   font-size: 50px;
   font-style: normal;
   font-weight: 400;
