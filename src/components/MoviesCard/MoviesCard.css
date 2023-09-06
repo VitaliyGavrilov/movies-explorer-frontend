@@ -96,18 +96,32 @@
     margin-top: 6px;
   }
 
-  .card__save-box_button {
-    margin-left: 31px;
-  }
+
 }
 
 
 @media screen and (max-width: 460px) {
   .card__save-box_button {
-    margin-left: 32px;
   }
 
   .card__image {
     height: 168px;
   }
+
+  .card__name {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 14px;
+
+  }
+
+  .card__time {
+    font-size: 10px;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  
 }
