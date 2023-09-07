@@ -21,7 +21,7 @@ function PageWithForm({
       <Link to="/" className="logo" title="На главную">
         <img src={logo} alt="На главную" />
       </Link>
-      <h2 className="form__title">{title}</h2>
+      <h1 className="form__title">{title}</h1>
       <form name={name} noValidate className="form__container">
         <fieldset className="form__set">
           {children}
@@ -33,7 +33,8 @@ function PageWithForm({
               className={`form__input ${errors.email ? 'form__input_type-error' : ''}`}
               name="email"
               required
-              placeholder="pochta@yandex.ru"
+              placeholder="Email"
+              pattern='[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}'
               onChange={handleInputChange}
             />
             <span className="form__input-error">{errors.email}</span>
@@ -46,7 +47,10 @@ function PageWithForm({
               className={`form__input form__input_password ${errors.password ? 'form__input_type-error' : ''}`}
               name="password"
               required
-              placeholder="••••••••••••••"
+              placeholder="Пароль"
+              pattern='\d+[a-zA-Z]+|[a-zA-Z]+\d+' 
+              minLength="8" 
+              maxLength="20"
               onChange={handleInputChange}
             />
             <span className={`form__input-error ${errorClass}`}>{errors.password}</span>

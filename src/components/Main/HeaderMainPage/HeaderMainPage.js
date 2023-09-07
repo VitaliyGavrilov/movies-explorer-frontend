@@ -8,15 +8,17 @@ function HeaderMainPage() {
   return (
     <header className="header-main">
       <div className='header-main__content'>
-        <img src={logo} alt="Логотип проекта"/>
-        <div className='header-main__links-block'>
+        <Link to="/">
+          <img src={logo} alt="Логотип проекта"/> 
+        </Link>
+        <nav className='header-main__links-block'>
           <Link to="/signup" className="header-main__link" >
             Регистрация
           </Link>
           <Link to="/signin" className="header-main__link header-main__link_green" >
             Войти
           </Link>
-        </div>
+        </nav>
       </div>
     </header>
         

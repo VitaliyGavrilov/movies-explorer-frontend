@@ -26,10 +26,10 @@ function AboutMe() {
         <div className='about-me__content'>
 
           <div className='about-me__info-block'>
-            <p className='about-me__content-title'>Виталий</p>
+            <h3 className='about-me__content-title'>Виталий</h3>
             <p className='about-me__content-subtitle'>Фронтенд-разработчик, 30 лет</p>
             <p className='about-me__content-text'>Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
-            <a className='about-me__content-link' href='https://github.com/VitaliyGavrilov'>Github</a>
+            <a className='about-me__content-link' href='https://github.com/VitaliyGavrilov' target="_blank" rel="noopener noreferrer">Github</a>
           </div>
 
           <img className='about-me__content-img' alt='Фото студента' src={ photo }/>

@@ -9,16 +9,16 @@ function Portfolio() {
 
           <ul className='portfolio__list'>
             <li className="portfolio__list-item">
-              <p className='portfolio__text'>Статичный сайт</p>
-              <a className='portfolio__link' href="https://github.com/VitaliyGavrilov/learn-to-learn-plus">↗</a>
+              <a className='portfolio__text' href="https://github.com/VitaliyGavrilov/learn-to-learn-plus" target="_blank" rel="noopener noreferrer">Статичный сайт</a>
+              <a className='portfolio__link' href="https://github.com/VitaliyGavrilov/learn-to-learn-plus" target="_blank" rel="noopener noreferrer">↗</a>
             </li>
             <li className="portfolio__list-item">
-              <p className='portfolio__text'>Адаптивный сайт</p>
-              <a className='portfolio__link' href="https://github.com/VitaliyGavrilov/russian-travel">↗</a>
+              <a className='portfolio__text' href="https://github.com/VitaliyGavrilov/russian-travel" target="_blank" rel="noopener noreferrer">Адаптивный сайт</a>
+              <a className='portfolio__link' href="https://github.com/VitaliyGavrilov/russian-travel" target="_blank" rel="noopener noreferrer">↗</a>
             </li>
             <li className="portfolio__list-item">
-              <p className='portfolio__text'>Одностраничное приложение</p>
-              <a className='portfolio__link' href="https://github.com/VitaliyGavrilov/react-mesto-auth">↗</a>
+              <a className='portfolio__text'  href="https://github.com/VitaliyGavrilov/react-mesto-auth" target="_blank" rel="noopener noreferrer">Одностраничное приложение</a>
+              <a className='portfolio__link' href="https://github.com/VitaliyGavrilov/react-mesto-auth" target="_blank" rel="noopener noreferrer">↗</a>
             </li>  
           </ul>
 

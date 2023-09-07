@@ -23,18 +23,21 @@ function Header() {
     <header className="header">
       <div className='header__content app__content header__content_width'>
 
-        <img src={logo} alt="Логотип проекта"/>
+        
+        <Link to="/">
+          <img src={logo} alt="Логотип проекта"/> 
+        </Link>
 
         <div className='header__links-block'>
 
-          <div className='header__movies-links'>
+          <nav className='header__movies-links'>
             <Link to="/movies" className="header__link" >
               Фильмы
             </Link>
             <Link to="/saved-movies" className="header__link header__link_margin" >
               Сохраненные фильмы
             </Link>
-          </div>
+          </nav>
 
           <ProfileLink/>
 

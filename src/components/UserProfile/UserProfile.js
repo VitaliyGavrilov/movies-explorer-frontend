@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import './UserProfile.css';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
@@ -11,9 +12,16 @@ function UserProfile() {
     setButtonStatus(!buttonStatus);
   }
 
+  // --Навигация
+  const navigate = useNavigate();
+  // --Функция для выхода из аккаунта
+  function signOut () {
+    navigate("/");
+  }
+
   return (
     <section className="profile-form">
-      <h2 className="profile-form__title">Привет, Виталий!</h2>
+      <h1 className="profile-form__title">Привет, Виталий!</h1>
       <form name="profile" noValidate onSubmit={toggleEditForm}>
         <fieldset className="profile-form__set">
           <label htmlFor="name" className="profile-form__label">
@@ -57,6 +65,7 @@ function UserProfile() {
               <button
                 className="profile-form__button profile-form__button-signout"
                 type="button"
+                onClick={signOut}
               >
                 Выйти из аккаунта
               </button>

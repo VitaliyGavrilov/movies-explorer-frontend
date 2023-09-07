@@ -12,12 +12,12 @@ function MoviesCard() {
     <article className="card">
       <img
         className="card__image"
-        alt="Кадр из фильма"
+        alt="Кадр из фильма '33 слова о дизайне'"
         src={image}
       />
       <div className='card__info'>
          <div className="card__text">
-          <p className="card__name">33&nbsp;слова о&nbsp;дизайне</p>
+          <h2 className="card__name">33&nbsp;слова о&nbsp;дизайне</h2>
           <p className="card__time">1ч&nbsp;47м</p>
         </div>
         <button
