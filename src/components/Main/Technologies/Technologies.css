@@ -46,6 +46,7 @@
   flex-wrap: wrap;
   margin: 0 auto;
   padding: 0;
+  max-width: 60.526316%;
 }
 
 .technologies__list-item {
@@ -72,6 +73,9 @@
   }
   .technologies__content-title {
     margin: 10px 0 0 0;
+  }
+  .technologies__list {
+    max-width: 98.005988%;
   }
   .technologies__list-item {
     width: 84px;
