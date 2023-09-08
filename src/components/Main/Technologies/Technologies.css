@@ -41,9 +41,10 @@
 
 .technologies__list {
   list-style-type: none;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 90px);
   gap: 10px;
-  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
   padding: 0;
   max-width: 60.526316%;
@@ -76,6 +77,7 @@
   }
   .technologies__list {
     max-width: 98.005988%;
+    grid-template-columns: repeat(auto-fit, 84px);
   }
   .technologies__list-item {
     width: 84px;

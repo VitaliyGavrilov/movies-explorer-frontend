@@ -143,7 +143,7 @@
     order: -1;
     width: 292px;
     height: 352px;
-    margin-bottom: 40px;
+    margin: 0 auto 40px auto;
   }
   .about-me__title {
     margin-bottom: 60px;
