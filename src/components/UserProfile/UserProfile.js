@@ -1,34 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import './UserProfile.css';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
-function UserProfile({currentUser}) {
-  const { handleInputChange, errors } = useFormWithValidation();
-  const [buttonStatus, setButtonStatus] = useState(false);
-
-  function toggleEditForm(e) {
-    e.preventDefault();
-    setButtonStatus(!buttonStatus);
-  }
+function UserProfile({currentUser, handleEditProfile}) {
+  // Подписка на контекст
 
   // --Навигация
   const navigate = useNavigate();
-  // --Функция для выхода из аккаунта
+  // Стейт-переменные
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [buttonStatus, setButtonStatus] = useState(false);
+
+  const { handleInputChange, errors } = useFormWithValidation();
+  
+  // После загрузки текущего пользователя из API его данные будут использованы в управляемых компонентах.
+  useEffect(() => {
+    setName(currentUser.name);
+    setEmail(currentUser.email);
+  }, [currentUser]);
+  // Режим редактирования/просмотра данных пользователя
+  function toggleModeBtn() {
+    setButtonStatus(!buttonStatus)
+  }
+  // Сабмит 
+  function handleSubmit(event) {
+    event.preventDefault();
+    handleEditProfile({ name: name, email: email });
+    toggleModeBtn();
+  }
+  // Функция для выхода из аккаунта
   function signOut () {
     localStorage.removeItem("token");
     navigate("/");
     console.log('Вы вышли из аккаунта')
   }
+  function handleName(event) { setName(event.target.value) }
+  function handleEmail(event) { setEmail(event.target.value) }
 
   return (
     <section className="profile-form">
       <h1 className="profile-form__title">{`Привет, ${currentUser.name}!`}</h1>
-      <form name="profile" noValidate onSubmit={toggleEditForm}>
+      <form name="profile" noValidate onSubmit={handleSubmit}>
         <fieldset className="profile-form__set">
           <label htmlFor="name" className="profile-form__label">
             Имя
-            <input
+            <input value={name || ''}
               id="name"
               type="text"
               className={`profile-form__input ${errors.name ? 'profile-form__input_type-error' : ''}`}
@@ -36,22 +54,22 @@ function UserProfile({currentUser}) {
               required
               minLength="2"
               maxLength="30"
-              placeholder="Виталий"
-              onChange={handleInputChange}
+              placeholder='Имя'
+              onChange={handleName}
               disabled={!buttonStatus}
             />
           </label>
           <span className="profile-form__input-error profile-form__input-error_name">{errors.name}</span>
           <label htmlFor="email" className="profile-form__label">
             E-mail
-            <input
+            <input value={email || ''}
               id="email"
               type="text"
               className={`profile-form__input ${errors.email ? 'profile-form__input_type-error' : ''}`}
               name="email"
               required
-              placeholder="pochta@yandex.ru"
-              onChange={handleInputChange}
+              placeholder='Email'
+              onChange={handleEmail}
               disabled={!buttonStatus}
             />
           </label>
@@ -60,7 +78,8 @@ function UserProfile({currentUser}) {
             <>
               <button
                 className="profile-form__button"
-                type="submit"
+                type="button"
+                onClick={toggleModeBtn}
               >
                 Редактировать
               </button>

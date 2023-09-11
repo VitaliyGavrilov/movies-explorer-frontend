@@ -89,6 +89,14 @@ function App() {
         console.log(err);
       });
   }
+    // -Обработчик сабмита данных пользователя
+    function handleEditProfile(userItem) {
+      mainApi.patchUserInfo(userItem.name, userItem.email)
+        .then((res) => { 
+          setCurrentUser(res); 
+        })
+        .catch((err) => { console.log(`Возникла ошибка при редактировании профиля, ${err}`) })
+    }
 
   // ---Сборка страницы из компонентов
   return (
@@ -99,6 +107,7 @@ function App() {
       < Route path="/profile" element={
         < Profile
           currentUser={currentUser}
+          handleEditProfile={handleEditProfile}
         />} 
       />
       < Route path="/signin" element={
