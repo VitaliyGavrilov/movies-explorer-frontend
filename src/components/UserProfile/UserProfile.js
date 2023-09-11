@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './UserProfile.css';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
-function UserProfile() {
+function UserProfile({currentUser}) {
   const { handleInputChange, errors } = useFormWithValidation();
   const [buttonStatus, setButtonStatus] = useState(false);
 
@@ -16,12 +16,14 @@ function UserProfile() {
   const navigate = useNavigate();
   // --Функция для выхода из аккаунта
   function signOut () {
+    localStorage.removeItem("token");
     navigate("/");
+    console.log('Вы вышли из аккаунта')
   }
 
   return (
     <section className="profile-form">
-      <h1 className="profile-form__title">Привет, Виталий!</h1>
+      <h1 className="profile-form__title">{`Привет, ${currentUser.name}!`}</h1>
       <form name="profile" noValidate onSubmit={toggleEditForm}>
         <fieldset className="profile-form__set">
           <label htmlFor="name" className="profile-form__label">
