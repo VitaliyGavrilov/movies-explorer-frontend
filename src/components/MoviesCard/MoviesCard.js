@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext  } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import './MoviesCard.css';
 
@@ -14,6 +15,10 @@ function MoviesCard({ card, isCardDelete = false }) {
   const { storedMovies, setStoredMovies, setPopupOpened, setPopupError } = useContext(SavedMoviesContext);
   //калькулятор длительности
   const duration = calcDuration(card.duration);
+
+  const location = useLocation();
+  //клас для кнопки удаления сохр.фильма на стр. сохраненных фильмов
+  const classDeleteBtn = location.pathname === '/saved-movies' ? "card__save-box_button card__save-box_button-cross" : "card__save-box_button";
   //Функции
   //обработчик ошибки лайка
   function handleLikeError(err) {
@@ -92,7 +97,7 @@ function MoviesCard({ card, isCardDelete = false }) {
         </div>
         {isCardSaved  ? ( 
           <button
-            className='card__save-box_button'
+            className={classDeleteBtn}
             type="button"
             title="Удалить фильм из сохраненных"
             aria-label="Удалить фильм из сохраненных"

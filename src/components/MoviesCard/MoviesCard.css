@@ -43,6 +43,7 @@
   all: unset;
   background-image: url(../../images/active-like.svg);
   background-repeat: no-repeat;
+  background-size: auto;
   height: 30px;
   width: 30px;
   margin: 0;
@@ -59,6 +60,12 @@
 
 .card__save-box_button-inactive {
   background-image: url(../../images/dis-like.svg);
+}
+
+.card__save-box_button-cross {
+  background-image: url(../../images/d-4.svg);
+  border-radius: 36px;
+  background-position: center;
 }
 
 .card__time {
