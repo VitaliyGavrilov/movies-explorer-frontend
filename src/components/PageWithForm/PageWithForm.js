@@ -39,7 +39,6 @@ function PageWithForm({
     setSubmitErrorText('');
   }, [isSignIn]);
 
-  // Disable form during request process
   useEffect(() => {
     if (submitProcess) {
       setValidity(true);

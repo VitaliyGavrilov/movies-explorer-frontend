@@ -23,18 +23,19 @@ import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 // СБОРКА
 function App() {
   //  ПЕРЕМЕННЫЕ:
-  const [isLoggedIn, setLoggedIn] = useState(true),
-        [checkedIn, setCheckedIn] = useState(false),
-        [currentUser, setCurrentUser] = useState({}),
-        [authFormPreloader, setAuthFormPreloader] = useState(false),
-        [authFormError, setAuthFormError] = useState(''),
-        [storedMovies, setStoredMovies] = useState([]),
-        [submitProcess, setSubmitProcess] = useState(false),
-        [isPopupOpened, setPopupOpened] = useState(false),
-        [popupError, setPopupError] = useState(false);
-
+  //состояния
+  const [isLoggedIn, setLoggedIn] = useState(true)
+  const [checkedIn, setCheckedIn] = useState(false)
+  const [authFormPreloader, setAuthFormPreloader] = useState(false)
+  const [submitProcess, setSubmitProcess] = useState(false)
+  const [isPopupOpened, setPopupOpened] = useState(false)
+  const [popupError, setPopupError] = useState(false)
+  //данные
+  const [currentUser, setCurrentUser] = useState({})
+  const [authFormError, setAuthFormError] = useState('')
+  const [storedMovies, setStoredMovies] = useState([])
+  //навигация
   const navigate = useNavigate();;
-
   //  ФУНКЦИИ обработчики
   //получение данных пользователя
   function getUser() {
@@ -104,7 +105,6 @@ function App() {
       .then((userData) => {
         setCurrentUser(userData);
         handleLogin(email, password, handleAuthorization);
-
         setSubmitProcess(false);
       })
       .catch((err) => handleAuthFormError(err))
@@ -115,14 +115,12 @@ function App() {
     setAuthFormError(false);
     setAuthFormPreloader(true);
     setSubmitProcess(true);
-
     handleLogin(email, password, handleFullAuthorization);
   };
   // ЭФФЕКТЫ
   //проверка токена
   useEffect(() => {
     const jwt = localStorage.getItem('token');
-
     if (jwt) {
       getUser();
       getSavedMovies();
@@ -133,9 +131,7 @@ function App() {
       setLoggedIn(false);
     };
   }, []);
-
-
-  // ---Сборка страницы из компонентов
+  // ---Сборка сприложения
   return (
     <CurrentUserContext.Provider value={ { currentUser, setCurrentUser, setPopupOpened, setPopupError } }>
       <SavedMoviesContext.Provider value={ { storedMovies, setStoredMovies, setPopupOpened, setPopupError } }>

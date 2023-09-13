@@ -7,22 +7,21 @@ import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 import  mainApi  from '../../utils/MainApi';
 
 function MoviesCard({ card, isCardDelete = false }) {
-  const [isCardSaved, setCardSaved] = useState(false)
-
-  const { storedMovies,
-    setStoredMovies,
-    setPopupOpened,
-    setPopupError
-  } = useContext(SavedMoviesContext);
+  //переменные
+  const [isCardSaved, setCardSaved] = useState(false);
   const moviesUrl = 'https://api.nomoreparties.co/';
+  //контекст
+  const { storedMovies, setStoredMovies, setPopupOpened, setPopupError } = useContext(SavedMoviesContext);
+  //калькулятор длительности
   const duration = calcDuration(card.duration);
-
+  //Функции
+  //обработчик ошибки лайка
   function handleLikeError(err) {
     console.log(err.message)
     setPopupOpened(true);
     setPopupError(true);
   }
-
+  //лайк
   function handleSave() {
     const movieData = {
       ...card,
@@ -43,7 +42,7 @@ function MoviesCard({ card, isCardDelete = false }) {
       })
       .catch((err) => handleLikeError(err));
   };
-
+  //дизлайк
   function handleDelete() {
     const savedMovie = storedMovies.find((movie) => movie.movieId === card.id);
     const movieForDelete = isCardDelete ? card : savedMovie;
@@ -56,8 +55,7 @@ function MoviesCard({ card, isCardDelete = false }) {
       })
       .catch((err) => handleLikeError(err));
   };
-
-
+  //Эффекты
   useEffect(() => {
     if (isCardDelete) {
       setCardSaved(true);

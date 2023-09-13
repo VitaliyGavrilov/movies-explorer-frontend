@@ -21,7 +21,6 @@ function InfoTooltip({ isOpen, setIsOpen, submitError = true }) {
     }
   };
 
-  //Close popup by Esc
   useEffect(() => {
     function closePopupByEsc(evt) {
       if (evt.key === esc) {

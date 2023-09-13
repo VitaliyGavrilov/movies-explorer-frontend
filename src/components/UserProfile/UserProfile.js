@@ -99,7 +99,6 @@ function UserProfile({ handleLogout }) {
     };
   }, [values.name, currentUser.name, values.email, currentUser.email]);
 
-  // Disable form during request process
   useEffect(() => {
     if(submitProcess) {
       setValidity(true);

@@ -1,4 +1,3 @@
-/* Movies numbers */
 const SHORTS_TIME = 40;
 const LARGE_VISIBLE_NUMBER = 12;
 const MEDIUM_VISIBLE_NUMBER = 8;
@@ -8,7 +7,6 @@ const SMALL_ADDITIONAL_NUMBER = 2;
 const MEDIUM_WINDOW_WIDTH = 769;
 const SMALL_WINDOW_WIDTH = 481;
 
-/* Server errors */
 const BAD_REQUEST_ERROR = 400;
 const UNATHORIZED_ERROR = 401;
 const CONFLICT_ERROR = 409;

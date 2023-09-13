@@ -29,15 +29,12 @@ function MoviesCardList({
     setNumberAdditionalCards(additionalNumber);
   };
 
-  // Show searched films by request of SearchForm
   useEffect(() => {
     setSearchedCards(cardsData.filter((film) => {
       return searchFilms(film, request, isShortFilm);
     }));
   }, [cardsData, request, isShortFilm]);
 
-
-  // Set number of visible cards
   useEffect(() => {
     if (!isCardDelete) {
       setVisibleCards(searchedCards.slice(0, numberVisibleCards));
@@ -51,7 +48,6 @@ function MoviesCardList({
     }
   }, [searchedCards, numberVisibleCards]);
 
-  // Show empty result after search
   useEffect(() => {
     if (searchedCards.length === 0 && cardsData.length > 0) {
       setSearched(true);
@@ -66,13 +62,10 @@ function MoviesCardList({
   }, [cardsData, searchedCards]);
 
 
-  // Show or hide more button
   useEffect(() => {
     setCardsButton(searchedCards.length > visibleCards.length);
   }, [searchedCards, visibleCards]);
 
-
-  // Set number of visible cards depending on width of window
   useEffect(() => {
     const handleNumber = () => moviesNumber(handleMoviesNumber);
 
@@ -80,8 +73,6 @@ function MoviesCardList({
     return () => window.removeEventListener('resize', handleNumber);
   });
 
-
-  // Set number of visible cards depending on width of window on mounting
   useEffect(() => {
     moviesNumber(handleMoviesNumber, 0);
   }, []);

@@ -17,11 +17,9 @@ function SearchForm({ handleMovieSubmit, isMovieSearched = false, setShortFilm }
   };
 
   function handleChecked() {
-    // Save local check state
     const newCheckParametr = JSON.parse(savedSearchParams);
     newCheckParametr.checked = !isChecked;
     localStorage.setItem('searchParams', JSON.stringify(newCheckParametr));
-
     setChecked(!isChecked);
     setShortFilm(!isChecked);
   };
