@@ -30,7 +30,7 @@ function SavedMovies() {
         isLoggedIn={ true }
       />
       <main className='app__main-block'>
-        <SearchForm handleMovieSubmit={ handleSavedMovieSubmit }/> 
+        <SearchForm handleMovieSubmit={ handleSavedMovieSubmit } setShortFilm={ setShortFilm }/> 
         <MoviesCardList 
           cardsData={ storedMovies }
           isCardDelete={ true }
