@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-import '../../Popup.css';
+import '../Popup.css';
 import success from '../../../images/edit-prof-success.svg';
 import failed from '../../../images/edit-prof-failed.svg';
 

@@ -13,7 +13,7 @@ import Login from '../../pages/Login/Login';
 import Register from '../../pages/Register/Register';
 import NotFound from '../../pages/NotFound/NotFound';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-// import InfoTooltip from '../Popup/InfoTooltip/InfoTooltip'
+import InfoTooltip from '../Popup/InfoTooltip/InfoTooltip'
 //API
 import * as auth from '../../utils/MainApiAuth';
 import mainApi from '../../utils/MainApi';
@@ -226,6 +226,11 @@ function App() {
           < Route path="/*" element={< NotFound />} />
 
         </ Routes >
+        <InfoTooltip
+            isOpen={ isPopupOpened }
+            setIsOpen={ setPopupOpened }
+            submitError={ popupError }
+          />
       </SavedMoviesContext.Provider>
     </CurrentUserContext.Provider>
   );
