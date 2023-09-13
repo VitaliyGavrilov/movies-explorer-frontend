@@ -148,7 +148,7 @@ function App() {
             path="sign-in"
             element={
               <ProtectedRoute
-              loggedIn={ true }
+              loggedIn={ !isLoggedIn }
               checkedIn={ true }
               element={
                 <Login
@@ -166,7 +166,7 @@ function App() {
             path="sign-up"
             element={
               <ProtectedRoute
-              loggedIn={ true }
+              loggedIn={ !isLoggedIn }
               checkedIn={ true }
               element={
                 <Register
