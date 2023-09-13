@@ -6,10 +6,11 @@ dark-3
 Адрес репозитория: https://github.com/VitaliyGavrilov/movies-explorer-frontend
 
 ## Ссылки на проект
+Frontend https://diplom.vit.nomoreparties.co/
 
 IP 51.250.73.70
 
-Backend https://diplom.vit.nomoreparties.co/
+Backend https://diplom.api.vit.nomoreparties.co/
 
 # Getting Started with Create React App
 
