@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import logo from '../../images/logo.svg';
 import burger from '../../images/icon-burger.svg';
@@ -9,6 +9,10 @@ import ProfileLink from '../ProfileLink/ProfileLink';
 
 function Header() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const location = useLocation();
+
+  const classMoviesLink = location.pathname === '/movies' ? "header__link header__link_border" : "header__link";
+  const classSavedMoviesLink = location.pathname === '/saved-movies' ? "header__link header__link_margin header__link_border" : "header__link header__link_margin";
 
   const toggleMenu = () => {
     setIsPopupOpen(!isPopupOpen);
@@ -31,10 +35,10 @@ function Header() {
         <div className='header__links-block'>
 
           <nav className='header__movies-links'>
-            <Link to="/movies" className="header__link" >
+            <Link to="/movies" className={classMoviesLink} >
               Фильмы
             </Link>
-            <Link to="/saved-movies" className="header__link header__link_margin" >
+            <Link to="/saved-movies" className={classSavedMoviesLink} >
               Сохраненные фильмы
             </Link>
           </nav>

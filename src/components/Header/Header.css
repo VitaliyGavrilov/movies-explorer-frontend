@@ -32,6 +32,11 @@
   padding: 0;
 }
 
+.header__link_border {
+  border-bottom: 2px solid white;
+  padding-bottom: 4px;
+}
+
 .header__link_margin {
   margin-left: 16px;
 }
