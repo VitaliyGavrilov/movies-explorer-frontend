@@ -74,6 +74,7 @@
 }
 
 .card__image {
+  height: 203px;
   max-width: 364px;
   width: 100%;
 }
@@ -94,6 +95,10 @@
   .card__text {
     max-width: 250px;
     margin-top: 6px;
+  }
+
+  .card__image {
+    height: 190px;
   }
 
 
