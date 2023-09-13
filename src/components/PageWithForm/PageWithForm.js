@@ -115,7 +115,7 @@ function PageWithForm({
             <span className="form__input-error">{ errors.password  }</span>
           </label>
 
-          <button className='form__button' type="submit" disabled={ validity && 'disabled' }>{ isSignIn ? 'Войти' : 'Зарегистрироваться' }</button>
+          <button className={`form__button ${ validity ? 'form__button_no-active' : '' }`} type="submit" disabled={ validity && 'disabled' }>{ isSignIn ? 'Войти' : 'Зарегистрироваться' }</button>
 
           <p className="form__redirect">
             { isSignIn ? 'Ещё не зарегистрированы?' : 'Уже зарегистрированы?' }
