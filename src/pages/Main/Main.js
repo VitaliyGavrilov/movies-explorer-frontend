@@ -15,13 +15,13 @@ import Header from '../../components/Header/Header';
 //Контекст
 
 // Основной компонент, который собирает странницу Main
-function Main({loggedIn}) {
+function Main({isLoggedIn}) {
   // ---Cтейт-переменные:
   // ---Функции
   // ---Сборка страницы из компонентов
   return (
     <div className='app__page'>
-      {loggedIn ? <Header/> : <HeaderMainPage />}
+      {isLoggedIn ? <Header/> : <HeaderMainPage />}
       <main className='app__main-block'>
         < Promo />
         < NavTab />

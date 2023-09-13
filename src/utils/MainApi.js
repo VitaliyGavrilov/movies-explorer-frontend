@@ -45,7 +45,6 @@ class MainApi {
   }
   //добавленеи в сохран.фильма(для загрузки сохр.фильмов на наш сервер)
   postSavedMovie(movie) {
-    const { country, director, duration, year, description, image, trailerLink, id, nameRU, nameEN } = movie;
     const token = localStorage.getItem("token");
     return fetch(`${this._baseUrl}/movies`, {
       method: "POST",
@@ -53,9 +52,10 @@ class MainApi {
         authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ country, director, duration, year, description, image, trailerLink, id, nameRU, nameEN }),
+      body: JSON.stringify(movie),
     }).then(this._checkResponse);
   }
+
   //удаление сохран.фильма
   deleteSavedMovie(id) {
     const token = localStorage.getItem("token");

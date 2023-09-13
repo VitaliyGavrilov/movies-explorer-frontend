@@ -23,7 +23,7 @@ import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 // СБОРКА
 function App() {
   //  ПЕРЕМЕННЫЕ:
-  const [isLoggedIn, setLoggedIn] = useState(false),
+  const [isLoggedIn, setLoggedIn] = useState(true),
         [checkedIn, setCheckedIn] = useState(false),
         [currentUser, setCurrentUser] = useState({}),
         [authFormPreloader, setAuthFormPreloader] = useState(false),
@@ -126,9 +126,11 @@ function App() {
     if (jwt) {
       getUser();
       getSavedMovies();
+      setLoggedIn(true);
     }
     else {
       setCheckedIn(true);
+      setLoggedIn(false);
     };
   }, []);
 
@@ -147,10 +149,10 @@ function App() {
 
           {/* РОУТ страницы ЛОГИН */}
           <Route
-            path="signin"
+            path="sign-in"
             element={
               <ProtectedRoute
-              loggedIn={ !isLoggedIn }
+              loggedIn={ true }
               checkedIn={ true }
               element={
                 <Login
@@ -165,10 +167,10 @@ function App() {
           />
           {/* РОУТ страницы РЕГИСТРАЦИЯ */}
           <Route
-            path="signup"
+            path="sign-up"
             element={
               <ProtectedRoute
-              loggedIn={ isLoggedIn }
+              loggedIn={ true }
               checkedIn={ true }
               element={
                 <Register
@@ -202,12 +204,24 @@ function App() {
                 loggedIn={ isLoggedIn }
                 checkedIn={ checkedIn }
                 element={
-                  <Movies isLoggedIn={ isLoggedIn } />
+                  <Movies />
                 }
               />
             }
           />
-
+          {/* РОУТ страницы СОХРАН.ФИЛЬМЫ */}
+          <Route
+            path="saved-movies"
+            element={
+              <ProtectedRoute
+                loggedIn={ isLoggedIn }
+                checkedIn={ checkedIn }
+                element={
+                  <SavedMovies />
+                }
+              />
+            }
+            />
           {/* РОУТ страницы NOTFOUND */}
           < Route path="/*" element={< NotFound />} />
 

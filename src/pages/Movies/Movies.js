@@ -9,7 +9,7 @@ import Footer from '../../components/Footer/Footer';
 import moviesApi from '../../utils/MoviesApi';
 
 // сборка страницы фильмы
-function Movies({ isLoggedIn }) {
+function Movies() {
   const [allCards, setAllCards] = useState([]),
         [isPreloader, setPreloader] = useState(false),
         [isGetFilmsError, setGetFilmsError] = useState(false),
@@ -67,7 +67,7 @@ function Movies({ isLoggedIn }) {
   return (
     <div className='app__page app__page_gray'>
       <Header
-        isLoggedIn={isLoggedIn}
+        isLoggedIn={ true }
       />
       <main className='app__main-block'>
         <SearchForm

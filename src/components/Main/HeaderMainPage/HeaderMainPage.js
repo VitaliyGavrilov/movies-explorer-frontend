@@ -12,10 +12,10 @@ function HeaderMainPage() {
           <img src={logo} alt="Логотип проекта"/> 
         </Link>
         <nav className='header-main__links-block'>
-          <Link to="/signup" className="header-main__link" >
+          <Link to="/sign-up" className="header-main__link" >
             Регистрация
           </Link>
-          <Link to="/signin" className="header-main__link header-main__link_green" >
+          <Link to="/sign-in" className="header-main__link header-main__link_green" >
             Войти
           </Link>
         </nav>

@@ -89,7 +89,7 @@ function setCustomValidError(evt, pattern, customText) {
 
 // Set custom name validation error
 function setCustomNameValidError(evt) {
-  const namePattern = /[(a-zа-яё)+\s\-]+/i;
+  const namePattern = /[(a-zа-яё)+\s-]+/i;
   const errorText = 'Поле должно содержать только латиницу, кириллицу, пробел или дефис.';
 
   setCustomValidError(evt, namePattern, errorText);
@@ -97,7 +97,7 @@ function setCustomNameValidError(evt) {
 
 // Set custom email validation error
 function setCustomEmailValidError(evt) {
-  const namePattern = /[a-z0-9]+[\_\-\.]*@[a-z]+\.{1,1}[a-z]{2,}/i;
+  const namePattern = /[a-z0-9]+[_\-.]*@[a-z]+\.{1,1}[a-z]{2,}/i;
   const errorText = 'До знака @ допустимы латиница, цифры, точка, _ и -';
 
   setCustomValidError(evt, namePattern, errorText);

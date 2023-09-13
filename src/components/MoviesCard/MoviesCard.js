@@ -7,8 +7,7 @@ import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 import  mainApi  from '../../utils/MainApi';
 
 function MoviesCard({ card, isCardDelete = false }) {
-  const [isCardSaved, setCardSaved] = useState(false),
-        [buttonClass, setButtonClass] = useState('');
+  const [isCardSaved, setCardSaved] = useState(false)
 
   const { storedMovies,
     setStoredMovies,
@@ -35,7 +34,9 @@ function MoviesCard({ card, isCardDelete = false }) {
     delete movieData.created_at;
     delete movieData.updated_at;
 
-    mainApi.likeCard(movieData)
+    console.log(movieData)
+
+    mainApi.postSavedMovie(movieData)
       .then((movie) => {
         setCardSaved(!isCardSaved);
         setStoredMovies((state) => ([...state, movie]));
@@ -47,7 +48,7 @@ function MoviesCard({ card, isCardDelete = false }) {
     const savedMovie = storedMovies.find((movie) => movie.movieId === card.id);
     const movieForDelete = isCardDelete ? card : savedMovie;
 
-    mainApi.dislikeCard(movieForDelete._id)
+    mainApi.deleteSavedMovie(movieForDelete._id)
       .then((movie) => {
         setCardSaved(!isCardSaved);
         setStoredMovies((state) => state.filter((m) => m._id !== movie._id));
@@ -59,11 +60,9 @@ function MoviesCard({ card, isCardDelete = false }) {
 
   useEffect(() => {
     if (isCardDelete) {
-      setButtonClass('card__button_for_delete');
       setCardSaved(true);
     }
     else {
-      setButtonClass('card__button_for_save');
       setCardSaved(false);
     };
   }, [isCardDelete]);
@@ -75,7 +74,6 @@ function MoviesCard({ card, isCardDelete = false }) {
 
     if (isMovieSaved && !isCardDelete) {
       setCardSaved(true);
-      setButtonClass('card__button_for_save');
     }
   }, []);
 

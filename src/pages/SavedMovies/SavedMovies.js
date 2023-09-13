@@ -1,36 +1,46 @@
+//Библиотеки
+import { useState, useContext } from 'react';
 // Импорты
-import SearchForm from '../../components/SearchHorm/SearchForm';
 import './SavedMovies.css';
+//Компоненты
+import SearchForm from '../../components/SearchHorm/SearchForm';
 import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-//Библиотеки
-
-//Компоненты
-
-//Утилиты
-
 //Контекст
+import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 
 // Основной компонент, который собирает приложение
-function Movies() {
-  // ---Cтейт-переменные:
+function SavedMovies() {
+  const [request, setRequest] = useState(''),
+        [isShortFilm, setShortFilm] = useState(false);
 
-  // ---Функции
+  const { storedMovies } = useContext(SavedMoviesContext);
+
+
+  function handleSavedMovieSubmit(value, checked) {
+    setRequest(value);
+    setShortFilm(checked);
+  };
 
   // ---Сборка страницы из компонентов
   return (
     <div className='app__page app__page_gray'>
       <Header
-        isLoggedIn
+        isLoggedIn={ true }
       />
       <main className='app__main-block'>
-        <SearchForm/> 
-        <MoviesCardList />
+        <SearchForm handleMovieSubmit={ handleSavedMovieSubmit }/> 
+        <MoviesCardList 
+          cardsData={ storedMovies }
+          isCardDelete={ true }
+          request={ request }
+          isShortFilm={ isShortFilm }
+        />
       </main>
       <Footer />
     </div>
   );
 }
 
-export default Movies;
+export default SavedMovies;
