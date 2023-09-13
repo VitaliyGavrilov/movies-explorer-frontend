@@ -73,6 +73,12 @@
   padding: 0;
 }
 
+.card__link {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
 .card__image {
   height: 203px;
   max-width: 364px;

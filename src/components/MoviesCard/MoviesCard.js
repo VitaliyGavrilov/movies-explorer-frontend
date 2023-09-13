@@ -79,11 +79,14 @@ function MoviesCard({ card, isCardDelete = false }) {
 
   return (
     <article className="card">
-      <img
-        className="card__image"
-        alt={`Кадр из фильма ${card.nameRU}`}
-        src={ isCardDelete ? card.image : `${ moviesUrl }${ card.image.url }` }
-      />
+      <a className="card__link" href={ card.trailerLink } target="_blank" rel="noreferrer">
+        <img
+          className="card__image"
+          alt={`Кадр из фильма ${card.nameRU}`}
+          src={ isCardDelete ? card.image : `${ moviesUrl }${ card.image.url }` }
+        />
+      </a>
+      
       <div className='card__info'>
         <div className="card__text">
           <h2 className="card__name" title={card.nameRU}>{card.nameRU}</h2>
