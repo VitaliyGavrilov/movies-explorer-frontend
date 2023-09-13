@@ -1,29 +1,53 @@
-import React, { useEffect } from 'react';
-import { Link, useLocation  } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './PageWithForm.css';
-import useFormWithValidation from '../../hooks/useFormWithValidation';
+import { useFormWithValidation } from '../../hooks/useFormWithValidation';
+import { setCustomNameValidError, setCustomEmailValidError, setErrorText } from '../../utils/utils';
 import logo from '../../images/logo.svg';
 
-function PageWithForm({ name, text, link, errorClass, onSubmit }) {
+function PageWithForm({   
+  isSignIn,
+  handleSubmit,
+  preloader,
+  submitError,
+  submitProcess 
+}) {
+  const [submitErrorText, setSubmitErrorText] = useState(false)
+  const [validity, setValidity] = useState(false);
 
-  const { pathname } = useLocation();
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
-  useEffect(() => {
-    resetForm();
-  }, [pathname, resetForm]);
+  function handleNameChange(evt) {
+    setCustomNameValidError(evt);
+  };
 
-  const handleSubmit = (evt) => {
+  function handleEmailChange(evt) {
+    setCustomEmailValidError(evt);
+  };
+
+  function handleFormSubmit(evt) {
     evt.preventDefault();
-    if (name === 'login') {
-      console.log(values.email, values.password);
-      onSubmit(values.email, values.password);
-    } else {
-      console.log(values.name, values.email, values.password);
-      onSubmit(values.name, values.email, values.password);
+    handleSubmit(values);
+  };
+
+
+  useEffect(() => {
+    setSubmitErrorText(setErrorText(submitError));
+  }, [submitError]);
+
+  useEffect(() => {
+    setSubmitErrorText('');
+  }, [isSignIn]);
+
+  // Disable form during request process
+  useEffect(() => {
+    if (submitProcess) {
+      setValidity(true);
     }
-    
-  }
+    else {
+      setValidity(!isValid);
+    };
+  }, [isValid, submitProcess]);
   // сборка компонента
   return (
     <section className="form">
@@ -32,53 +56,72 @@ function PageWithForm({ name, text, link, errorClass, onSubmit }) {
         <img src={logo} alt="На главную" />
       </Link>
 
-      <h1 className="form__title">{text.title}</h1>
+      <h1 className="form__title">{ isSignIn ? 'Рады видеть!' : 'Добро пожаловать!' }</h1>
 
-      <form name={`form-${name}`} noValidate className="form__container" onSubmit={handleSubmit}>
+      <form className="form__container" name='authForm' noValidate
+        onSubmit={handleFormSubmit} onChange={ handleChange }
+      >
         <fieldset className="form__set">
 
-          {name === 'register' && (
+          {!isSignIn && (
           <label htmlFor="name" className="form__label">
             Имя
-            <input className={`form__input ${errors.name ? 'form__input_type-error' : ''}`}
-              onChange={handleChange} value={values.name || ''}
-              id="name" type="text" name="name" minLength="2" maxLength="30" required
-              placeholder="Виталий"
+            <input className='form__input'
+              id="auth_input-name"
+              name="name"
+              type="text"
+              value={ values.name || "" }
+              autoComplete="off"
+              onChange={ handleNameChange }
+              disabled={ submitProcess && 'disabled' }
+              minLength={ 2 }
+              maxLength={ 30 }
+              required
+              placeholder="Имя пользователя"
             />
-            <span className="form__input-error form__input-error_name">{errors.name || ''}</span>
+            <span className="form__input-error">{ errors.name }</span>
           </label>
           )}
 
           <label htmlFor="email" className="form__label">
             E-mail
-            <input className={`form__input ${errors.email ? 'form__input_type-error' : ''}`}
-              onChange={handleChange} value={values.email || ''}
-              id="email" type="email" name="email" required
-              placeholder="Email" pattern='[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}'
+            <input className='form__input'
+              id="auth_form-email"
+              name="email"
+              type="email"
+              value={ values.email || "" }
+              autoComplete="off"
+              onChange={ handleEmailChange }
+              disabled={ submitProcess && 'disabled' }
+              required
+              placeholder="Email"
             />
-            <span className="form__input-error">{errors.email || ''}</span>
+            <span className="form__input-error">{ errors.email }</span>
           </label>
 
           <label htmlFor="password" className="form__label">
             Пароль
-            <input className={`form__input form__input_password ${errors.password ? 'form__input_type-error' : ''}`}
-              onChange={handleChange} value={values.password || ''}
-              id="password" type="password" name="password" required
-              placeholder="Пароль" pattern='\d+[a-zA-Z]+|[a-zA-Z]+\d+' minLength="8" maxLength="20"
-              
+            <input className='form__input'
+              id="auth_form-password"
+              name="password"
+              type="password"
+              value={ values.password || "" }
+              onChange={ handleChange }
+              disabled={ submitProcess && 'disabled' }
+              autoComplete="off"
+              minLength={ 8 }
+              required
+              placeholder="Пароль"
             />
-            <span className={`form__input-error ${errorClass}`}>{errors.password || ''}</span>
+            <span className="form__input-error">{ errors.password  }</span>
           </label>
 
-          <button className='form__button' type="submit" disabled={!isValid}>{text.btn}</button>
+          <button className='form__button' type="submit" disabled={ validity && 'disabled' }>{ isSignIn ? 'Войти' : 'Зарегистрироваться' }</button>
 
           <p className="form__redirect">
-            {text.question}
-            <Link
-              to={link}
-              className="form__redirect form__redirect_active"
-            >
-              {text.link}
+            { isSignIn ? 'Ещё не зарегистрированы?' : 'Уже зарегистрированы?' }
+            <Link to={ isSignIn ? "/sign-up" : "/sign-in"} className="form__redirect form__redirect_active">
+              { isSignIn ? 'Регистрация' : 'Войти' }
             </Link>
           </p>
         </fieldset>

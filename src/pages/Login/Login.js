@@ -1,17 +1,22 @@
 import React from 'react';
 import PageWithForm from '../../components/PageWithForm/PageWithForm';
-import { loginText } from '../../utils/const'
 
-function Login({ handleLogin }) {
+function Login({   
+  isSignIn,
+  handleSubmit,
+  preloader,
+  submitError,
+  submitProcess 
+}) {
   return (
     <div className='app__page app__page_gray'>
       <main>
         <PageWithForm
-          name="login"
-          text={loginText}
-          link="/signup"
-          errorClass="form__input-error_login"
-          onSubmit={handleLogin}
+            isSignIn={isSignIn}
+            handleSubmit={handleSubmit}
+            preloader={preloader}
+            submitError={submitError}
+            submitProcess={submitProcess}
         />
       </main>
     </div>

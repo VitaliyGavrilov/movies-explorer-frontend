@@ -1,4 +1,5 @@
-// Импорты
+// ИМПОРТЫ
+//Стили
 import './App.css';
 //Библиотеки
 import React, { useState, useEffect } from 'react';
@@ -11,117 +12,208 @@ import Profile from '../../pages/Profile/Profile';
 import Login from '../../pages/Login/Login';
 import Register from '../../pages/Register/Register';
 import NotFound from '../../pages/NotFound/NotFound';
-//Утилиты
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+// import InfoTooltip from '../Popup/InfoTooltip/InfoTooltip'
 //API
 import * as auth from '../../utils/MainApiAuth';
 import mainApi from '../../utils/MainApi';
-import moviesApi from '../../utils/MoviesApi';
-
 //Контекст
-
-// Основной компонент, который собирает приложение
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
+// СБОРКА
 function App() {
-  // ---Cтейт-переменные:
-  const [loggedIn, setLoggedIn] = useState(false);        // состояние-Вход в акаунт
-  const [currentUser, setCurrentUser] = useState({});     // данные-Данные текущего пользователя
-  const [savedMovies, setSavedMovies] = useState([]);     // данные-Сохраненные фильмы
-  const [movies, setMovies] = useState([]);               // данные-Фильмы
-  const navigate = useNavigate();
+  //  ПЕРЕМЕННЫЕ:
+  const [isLoggedIn, setLoggedIn] = useState(false),
+        [checkedIn, setCheckedIn] = useState(false),
+        [currentUser, setCurrentUser] = useState({}),
+        [authFormPreloader, setAuthFormPreloader] = useState(false),
+        [authFormError, setAuthFormError] = useState(''),
+        [storedMovies, setStoredMovies] = useState([]),
+        [submitProcess, setSubmitProcess] = useState(false),
+        [isPopupOpened, setPopupOpened] = useState(false),
+        [popupError, setPopupError] = useState(false);
 
-  // ---Функции
-    // ---Запрос на получение данных пользователя и карточек, только при успешном входе в систему
-    useEffect(() => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        Promise.all([mainApi.getUserInfo(), mainApi.getSavedMovies(), moviesApi.getMovies()])
-          .then(([userInfo, savedMovies, allMovies]) => {
-            setCurrentUser(userInfo);
-            setSavedMovies(savedMovies);
-            setMovies(allMovies);
-            // console.log(userInfo);
-            // console.log(savedMovies);
-            // console.log(allMovies);
-          })
-          .catch((err) => { console.log(`Возникла ошибка при загрузке данных, ${err}`) })
-      }
-    }, [loggedIn]);
-    // ---Если токен есть в локальном хранилише то переходим на базовую страницу
-    useEffect(() => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        auth
-          .checkToken()
-          .then((res) => {
-            setLoggedIn(true);
-            // navigate("/movies");
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-    }, [navigate]);
-  // ---Функции для логина и регистрации:
-  // --Функция для логина
-  function handleLogin (email, password) {
-    auth
-      .login(email, password)
+  const navigate = useNavigate();;
+
+  //  ФУНКЦИИ обработчики
+  //получение данных пользователя
+  function getUser() {
+    mainApi.getUserInfo()
+      .then((userData) => {
+        setCurrentUser(userData);
+        setLoggedIn(true);
+        setCheckedIn(true);
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setCheckedIn(true);
+      });
+  };
+  //получение сохран.фильмов
+  function getSavedMovies() {
+    mainApi.getSavedMovies()
+      .then((movies) => {
+        setStoredMovies(movies);
+        localStorage.setItem('savedMovies', JSON.stringify(movies));
+      })
+      .catch((err) => console.log(err.message));
+  };
+  //авторизация
+  function handleAuthorization() {
+    setLoggedIn(true);
+    getSavedMovies();
+    navigate('/movies', { replace: true });
+  };
+  //полная авторизация
+  function handleFullAuthorization() {
+    getUser();
+    handleAuthorization();
+  };
+  //ошибка авторизации
+  function handleAuthFormError(err) {
+    console.log(err.message);
+    setAuthFormError(err.status);
+    setSubmitProcess(false);
+  };
+  //логин
+  function handleLogin(email, password, handleAuth) {
+    auth.login(email, password)
       .then((res) => {
         localStorage.setItem("token", res.token);
-        setLoggedIn(true);
-        navigate("/movies");
-        console.log('Вы успешно вошли в аккаунт')
+        setSubmitProcess(false);
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-  // --Функция для регистрации
-  function handleRegister (name, email, password) {
-    auth
-      .register(name, email, password)
-      .then(() => {
-        console.log('Вы успешно зарегистрировались')
+      .then(() => handleAuth())
+      .catch((err) => handleAuthFormError(err))
+      .finally(() => setAuthFormPreloader(false));
+  };
+  //выход из аккаунта
+  function handleLogout() {
+    setLoggedIn(false);
+    setCurrentUser({ name: '', email: '' });
+    localStorage.clear();
+    navigate('/', { replace: true });
+  };
+  //  ФУНКЦИИ сабмита
+  // Регистрация
+  function signUp({ name, email, password }) {
+    setAuthFormError(false);
+    setAuthFormPreloader(true);
+    setSubmitProcess(true);
+
+    auth.register( name, email, password )
+      .then((userData) => {
+        setCurrentUser(userData);
+        handleLogin(email, password, handleAuthorization);
+
+        setSubmitProcess(false);
       })
-      .then(() => {
-        handleLogin(email, password)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-    // -Обработчик сабмита данных пользователя
-    function handleEditProfile(userItem) {
-      mainApi.patchUserInfo(userItem.name, userItem.email)
-        .then((res) => { 
-          setCurrentUser(res); 
-        })
-        .catch((err) => { console.log(`Возникла ошибка при редактировании профиля, ${err}`) })
+      .catch((err) => handleAuthFormError(err))
+      .finally(() => setAuthFormPreloader(false));
+  };
+  // Логин
+  function signIn({ email, password }) {
+    setAuthFormError(false);
+    setAuthFormPreloader(true);
+    setSubmitProcess(true);
+
+    handleLogin(email, password, handleFullAuthorization);
+  };
+  // ЭФФЕКТЫ
+  //проверка токена
+  useEffect(() => {
+    const jwt = localStorage.getItem('token');
+
+    if (jwt) {
+      getUser();
+      getSavedMovies();
     }
+    else {
+      setCheckedIn(true);
+    };
+  }, []);
+
 
   // ---Сборка страницы из компонентов
   return (
-    < Routes >
-      < Route path="/" element={< Main />} />
-      < Route path="/movies" element={< Movies />} />
-      < Route path="/saved-movies" element={<SavedMovies/>} />
-      < Route path="/profile" element={
-        < Profile
-          currentUser={currentUser}
-          handleEditProfile={handleEditProfile}
-        />} 
-      />
-      < Route path="/signin" element={
-        < Login
-          handleLogin={handleLogin}
-        />} 
-      />
-      < Route path="/signup" element={
-        < Register
-          handleRegister={handleRegister}
-        />} 
-      />
-      < Route path="/*" element={< NotFound />} />
-    </ Routes >
+    <CurrentUserContext.Provider value={ { currentUser, setCurrentUser, setPopupOpened, setPopupError } }>
+      <SavedMoviesContext.Provider value={ { storedMovies, setStoredMovies, setPopupOpened, setPopupError } }>
+        < Routes >
+          {/* РОУТ страницы МЕЙН */}
+          < Route path="/" element={ 
+            < Main
+              isLoggedIn={isLoggedIn}
+            />} 
+          />
+
+          {/* РОУТ страницы ЛОГИН */}
+          <Route
+            path="signin"
+            element={
+              <ProtectedRoute
+              loggedIn={ !isLoggedIn }
+              checkedIn={ true }
+              element={
+                <Login
+                  isSignIn={true}
+                  handleSubmit={signIn}
+                  preloader={authFormPreloader}
+                  submitError={authFormError}
+                  submitProcess={submitProcess}
+                />
+              } />
+            }
+          />
+          {/* РОУТ страницы РЕГИСТРАЦИЯ */}
+          <Route
+            path="signup"
+            element={
+              <ProtectedRoute
+              loggedIn={ isLoggedIn }
+              checkedIn={ true }
+              element={
+                <Register
+                  isSignIn={false}
+                  handleSubmit={signUp}
+                  preloader={authFormPreloader}
+                  submitError={authFormError}
+                  submitProcess={submitProcess}
+                />
+              } />
+            }
+          />
+          {/* РОУТ страницы ПРОФИЛЬ */}
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute
+                loggedIn={ isLoggedIn }
+                checkedIn={ checkedIn }
+                element={
+                  <Profile isLoggedIn={isLoggedIn} handleLogout={handleLogout}  />
+                }
+              />
+            }
+          />
+          {/* РОУТ страницы ФИЛЬМЫ */}
+          <Route
+            path="movies"
+            element={
+              <ProtectedRoute
+                loggedIn={ isLoggedIn }
+                checkedIn={ checkedIn }
+                element={
+                  <Movies isLoggedIn={ isLoggedIn } />
+                }
+              />
+            }
+          />
+
+          {/* РОУТ страницы NOTFOUND */}
+          < Route path="/*" element={< NotFound />} />
+
+        </ Routes >
+      </SavedMoviesContext.Provider>
+    </CurrentUserContext.Provider>
   );
 }
 

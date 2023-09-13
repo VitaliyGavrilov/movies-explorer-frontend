@@ -9,18 +9,19 @@ import Technologies from '../../components/Main/Technologies/Technologies';// к
 import AboutMe from '../../components/Main/AboutMe/AboutMe';//компонент с информацией о студенте.
 import Portfolio from '../../components/Main/Portfolio/Portfolio';//компонент со ссылками на другие проекты.
 import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
 //Утилиты
 
 //Контекст
 
 // Основной компонент, который собирает странницу Main
-function Main() {
+function Main({loggedIn}) {
   // ---Cтейт-переменные:
   // ---Функции
   // ---Сборка страницы из компонентов
   return (
     <div className='app__page'>
-      <HeaderMainPage />
+      {loggedIn ? <Header/> : <HeaderMainPage />}
       <main className='app__main-block'>
         < Promo />
         < NavTab />

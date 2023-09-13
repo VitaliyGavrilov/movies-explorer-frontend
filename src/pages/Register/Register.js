@@ -1,17 +1,21 @@
 import React from 'react';
 import PageWithForm from '../../components/PageWithForm/PageWithForm';
-import { registerText } from '../../utils/const'
 
-function Register({ handleRegister }) {
+function Register({  
+  isSignIn,
+  handleSubmit,
+  preloader,
+  submitError,
+  submitProcess }) {
   return (
     <div className='app__page app__page_gray'>
       <main>
         <PageWithForm
-           name="register"
-           text={registerText}
-           link="/signin"
-           errorClass="form__input-error_register"
-           onSubmit={handleRegister}
+          isSignIn={isSignIn}
+          handleSubmit={handleSubmit}
+          preloader={preloader}
+          submitError={submitError}
+          submitProcess={submitProcess}
         />
       </main>
     </div>
