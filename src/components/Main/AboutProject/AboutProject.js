@@ -17,10 +17,10 @@ function AboutProject() {
 
   // ---Сборка страницы из компонентов
   return (
-    <section className="about-project">
+    <section className="about-project" id="project">
       <div className="about-project__block app__content">
 
-        <h2 className="app__subtitle">О проекте</h2>
+        <h2 className="app__subtitle" >О проекте</h2>
 
         <div className="about-project__contents">
           

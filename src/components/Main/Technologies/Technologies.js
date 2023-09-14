@@ -17,7 +17,7 @@ function Technologies() {
 
   // компонент с использованными технологиями.
   return (
-    <section className="technologies">
+    <section className="technologies" id="technologies">
       <div className="technologies__block app__content">
 
         <h2 className="app__subtitle">Технологии</h2>
