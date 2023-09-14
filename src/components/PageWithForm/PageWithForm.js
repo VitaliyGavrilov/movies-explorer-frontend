@@ -16,6 +16,7 @@ function PageWithForm({
   const [validity, setValidity] = useState(false);
 
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+  
 
   function handleNameChange(evt) {
     setCustomNameValidError(evt);

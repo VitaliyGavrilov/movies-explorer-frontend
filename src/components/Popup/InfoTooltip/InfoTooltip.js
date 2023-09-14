@@ -39,7 +39,7 @@ function InfoTooltip({ isOpen, setIsOpen, submitError = true }) {
 
   useEffect(() => {
     if (!submitError) {
-      setErrorText('Профиль успешно обновлён!');
+      setErrorText('Успех!');
       setPopupPic(success);
       setAltText('Успех!');
     }

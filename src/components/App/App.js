@@ -82,9 +82,17 @@ function App() {
       .then((res) => {
         localStorage.setItem("token", res.token);
         setSubmitProcess(false);
+
+        setPopupOpened(true);
+        setPopupError(false);
       })
       .then(() => handleAuth())
-      .catch((err) => handleAuthFormError(err))
+      .catch((err) => {
+        handleAuthFormError(err);
+
+        setPopupOpened(true);
+        setPopupError(true);
+      })
       .finally(() => setAuthFormPreloader(false));
   };
   //выход из аккаунта
@@ -106,8 +114,16 @@ function App() {
         setCurrentUser(userData);
         handleLogin(email, password, handleAuthorization);
         setSubmitProcess(false);
+
+        setPopupOpened(true);
+        setPopupError(false);
       })
-      .catch((err) => handleAuthFormError(err))
+      .catch((err) => {
+        handleAuthFormError(err);
+
+        setPopupOpened(true);
+        setPopupError(true);
+      })
       .finally(() => setAuthFormPreloader(false));
   };
   // Логин
@@ -127,6 +143,7 @@ function App() {
       setLoggedIn(true);
     }
     else {
+      handleLogout()
       setCheckedIn(true);
       setLoggedIn(false);
     };
