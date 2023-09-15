@@ -48,6 +48,7 @@ function App() {
       .catch((err) => {
         console.log(err.message);
         setCheckedIn(true);
+        handleLogout();
       });
   };
   //получение сохран.фильмов
