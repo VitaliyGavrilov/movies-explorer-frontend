@@ -1,0 +1,157 @@
+.card {
+  max-width: 364px;
+  width: 100%;
+  position: relative;
+  border-radius: 6px;
+  background: #222;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card__info {
+  padding: 9px 16px 16px 16px;
+  margin: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.card__text {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  column-gap: 26px;
+  max-width: 280px;
+  width: 100%;
+  margin: 7px 0 0 0;
+  padding: 0;
+}
+
+.card__name {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 100%;
+  margin: 0 0 17px;
+  padding: 0;
+}
+
+.card__save-box_button {
+  all: unset;
+  background-image: url(../../images/active-like.svg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  height: 30px;
+  width: 30px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card__save-box_button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.card__save-box_button-inactive {
+  background-image: url(../../images/dis-like.svg);
+}
+
+.card__save-box_button-cross {
+  background-image: url(../../images/d-4.svg);
+  border-radius: 36px;
+  background-position: center;
+}
+
+.card__time {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  color: #a0a0a0;
+  max-width: 37px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.card__link {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+  max-height: 203px;
+}
+
+.card__image {
+  height: 203px;
+  max-width: 364px;
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 920px) {
+  .card {
+    max-width: 339px;
+  }
+
+  .card__info {
+    padding: 8px 14px 14px 14px;
+  }
+
+  .card__name {
+    margin: 0 0 15px;
+  }
+
+  .card__text {
+    max-width: 250px;
+    margin-top: 6px;
+  }
+
+  .card__image {
+    height: 190px;
+  }
+
+  .card__link {
+    max-height: 190px;
+  }
+
+
+}
+
+
+@media screen and (max-width: 460px) {
+  .card__save-box_button {
+  }
+
+  .card__image {
+    height: 168px;
+  }
+
+  .card__name {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 14px;
+
+  }
+
+  .card__time {
+    font-size: 10px;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  .card__link {
+    max-height: 168px;
+  }
+
+  
+}

@@ -1,0 +1,31 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './HeaderMainPage.css';
+import logo from '../../../images/logo.svg';
+
+
+function HeaderMainPage() {
+  return (
+    <header className="header-main">
+      <div className='header-main__content'>
+        <Link to="/">
+          <img src={logo} alt="Логотип проекта"/> 
+        </Link>
+        <nav className='header-main__links-block'>
+          <Link to="/sign-up" className="header-main__link" >
+            Регистрация
+          </Link>
+          <Link to="/sign-in" className="header-main__link header-main__link_green" >
+            Войти
+          </Link>
+        </nav>
+      </div>
+    </header>
+        
+        
+  );
+}
+
+
+
+export default HeaderMainPage;
