@@ -1,12 +1,15 @@
 const SHORTS_TIME = 40;
+//базовое количество карточек
 const LARGE_VISIBLE_NUMBER = 12;
 const MEDIUM_VISIBLE_NUMBER = 8;
 const SMALL_VISIBLE_NUMBER = 5;
+//количество добавленных карточек
 const STANDART_ADDITIONAL_NUMBER = 3;
 const SMALL_ADDITIONAL_NUMBER = 2;
-const MEDIUM_WINDOW_WIDTH = 769;
+//ширина экрана
+const MEDIUM_WINDOW_WIDTH = 1279;
 const SMALL_WINDOW_WIDTH = 481;
-
+//ошибки
 const BAD_REQUEST_ERROR = 400;
 const UNATHORIZED_ERROR = 401;
 const CONFLICT_ERROR = 409;
